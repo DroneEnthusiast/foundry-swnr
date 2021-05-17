@@ -34,6 +34,7 @@
         />
       </div>
     </div>
+    {{#if (ne item.type "droneWeapon")}}
     <div class="grid md:grid-cols-2 gap-1">
       <h3 class="text-base w-full md:col-span-2">
         {{localize 'swnr.weapon.shock.label'}}:
@@ -87,14 +88,21 @@
         {{/select}}
       </select>
     </div>
+    {{/if}}
+    {{#if (and owner (or (ne item.type "droneWeapon") (getActor actor.data.data.operator)))}}
     <div>
+      {{#if (ne item.type "droneWeapon")}}
       <div>{{localize 'swnr.sheet.skill'}}:</div>
+      {{else}}
+      <div>{{localize 'swnr.drone.operator-skill'}}:</div>
+      {{/if}}
       <select
         class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
         name="data.skill"
       >
         {{#select data.skill}}
         <option value="">{{localize 'swnr.weapon.noSetSkill'}}</option>
+        {{#if (ne item.type "droneWeapon")}}
         {{#each actor.itemTypes.skill}}
         <option value="{{this.id}}">
           {{this.name}} {{this.data.data.rank}}
@@ -106,9 +114,11 @@
           {{this.name}} {{this.data.data.rank}}
         </option>
         {{/each}}
+        {{/if}}
         {{/select}}
       </select>
     </div>
+    {{/if}}
     <div class="flex flex-wrap gap-1">
       <h3 class="text-base w-full">{{localize 'swnr.weapon.ammo'}}:</h3>
       <div>
@@ -196,6 +206,7 @@
         <div>{{localize 'swnr.sheet.suppress'}}</div>
       </label>
       {{/if}}
+      {{#if (ne item.type "droneWeapon")}}
       <label class="flex items-center gap-1">
         <input
           type="checkbox"
@@ -205,6 +216,7 @@
       />
         <div>{{localize 'swnr.weapon.skillAddDamage'}}</div>
       </label>
+      {{/if}}
     </div>
   </div>
 </form>
