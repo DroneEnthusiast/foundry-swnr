@@ -68,7 +68,6 @@ export function initSkills(
 }
 const skills = {
   none: <Array<string>>[],
-  spaceMagic: ["knowMagic", "useMagic", "sunblade", "fight"],
   classic: [
     "artist",
     "athletics",

@@ -80,7 +80,7 @@ export class CharacterActorSheet extends ActorSheet<
         form.querySelector("[name=extra]:checked")
       );
       initSkills(this.actor, <"revised" | "classic" | "none">skillList.value);
-      initSkills(this.actor, <"spaceMagic" | "psionic" | "none">extra.value);
+      initSkills(this.actor, <"psionic" | "none">extra.value);
       return;
     };
     const template = "systems/swnr/templates/dialogs/add-bulk-skills.html";
